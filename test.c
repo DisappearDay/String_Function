@@ -154,3 +154,56 @@ int my_strcmp(const char* str1,const char* str2) {
 // }
 
 
+//int main() {
+//	//strncmp 字符串比较
+//	const char* arr1 = "abcdef";
+//	char* arr2 = "qwertyu";
+//	int ret=strncmp(arr1,arr2,3);
+//	printf("%d\n",ret);
+//	return 0;
+//}
+
+
+
+char* my_strstr(const char* str1,const char* str2) {
+	assert(str1 && str2);
+	char* s1 = NULL;
+	char* s2 = NULL;
+	char* now = (char*)str1;
+	if (*str2=='\0') //if(!*str2)  str2为0时是假，加个！表示为真
+		return (char*)str1;
+
+	while (*now) {
+		s1 = now;
+		s2 = (char*)str2;
+		while ((*s1 != '\0') && (*s2 != '\0') && (*s1 == *s2)) 
+		{
+			s1++;
+			s2++;
+		}
+		if (*s2=='\0') {
+			return now;//找到字串
+		}
+		if (*s1 == '\0') {
+			return NULL;//找不到字串
+		}
+		now++;
+	}
+	return NULL; //找不到字串
+}
+
+int main() {
+	char* p1 = "addedef";
+	char* p2 = "def";
+	char* ret = my_strstr(p1, p2);//返回的是defabcdef ，返回的是在p1中首次出现的字符串地址，打印p1后面的所有元素
+	if (ret==NULL) {
+		printf("查不到该字串");
+	}
+	else {
+		printf("%s\n",ret);
+	}
+
+
+	return 0;
+}
+

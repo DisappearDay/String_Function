@@ -2,6 +2,9 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <ctype.h>
+
+#include <errno.h>
 
 int i_cmp(const void* str1,const void* str2) {
 	return *((int*)str1) - *((int*)str2);

@@ -396,3 +396,24 @@ int main() {
 	}
 	return 0;
 }
+
+//int main() {
+//	int arr1[] = { 1,2,3,5,6,7,8,9 };
+//	int arr2[] = { 1,2,3,6,3,1,0,9 };
+//	int ret = memcmp(arr1, arr2, 8);//8的单位是字节
+//	printf("%d\n", ret);
+//	return 0;
+//}
+
+
+int main() {
+	char arr[10] = "";
+	int arr1[10] = { 0 };
+	memset(arr,'*',7);
+	memset(arr1, 1, 40);
+	int i = 0;
+	for (i = 0; i < 10; i++) {
+		printf("%d ",arr1[i]);
+	}
+	return 0;
+}

@@ -316,3 +316,83 @@ int main() {
 
 	return 0;
 }
+
+
+struct Stu
+{
+	char name[20];
+	int age;
+};
+
+
+
+void* my_memcpy(void* dest,const void *src,int num) {
+	void* ret = dest;
+	assert(dest && src);
+	while (num) {
+		*(char*)dest = *(char*)src;
+		++(char*)dest;
+		++(char*)src;
+		num--;
+	}
+	return ret;
+}
+
+
+//int main() {
+//
+//	int arr1[] = { 1,2,3,4,5,6 };
+//	int arr2[7] = { 0 };
+//
+//	struct Stu s1[] = { {"张三",19} ,{"李四",30} };
+//	struct Stu s2[3] = { 0 };
+//
+//
+//
+//	//strcpy(arr2, arr1);//该函数不行，因为该函数只能拷贝字符串类型的数据。
+//	my_memcpy(arr2,arr1,sizeof(arr1));
+//
+//	my_memcpy(s2, s1, sizeof(s1));
+//	int i = 0;
+//	for (i = 0; i < 7; i++) {
+//		printf("%d ", arr2[i]);
+//	}
+//
+//	return 0;
+//}
+
+void* my_memmove(void* dest,const void* src,int num) {
+	assert(dest && src);
+	void* ret = dest;
+	int var = num;
+	if (((char*)dest > (char*)src)&&((char*)dest < ((char*)src)+var))
+	{
+		while (var--) {
+			*(((char*)dest) + var)= *(((char*)src) + var);
+			
+		}
+	}
+	else if((char*)dest < (char*)src)
+	{
+		while (num) {
+			*(char*)dest = *(char*)src;
+			++(char*)dest;
+			++(char*)src;
+			num--;
+		}
+	}
+	return ret;
+}
+
+
+int main() {
+	int arr[] = { 1,2,3,4,5,6,7,8,9,10 };
+	int i = 0;
+	//my_memcpy(arr + 2, arr, 20);//不处理重叠拷贝
+	my_memmove(arr, arr+2, 20);
+	//memmove(arr + 2, arr, 20);
+	for (int i = 0; i < 10;i++) {
+		printf("%d ", arr[i]);
+	}
+	return 0;
+}
